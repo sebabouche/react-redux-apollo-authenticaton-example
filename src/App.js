@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from './actions/user';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { logoutUser } from './state/ducks/user/actions';
 import logo from './logo.svg';
 import './App.css';
+import Signup from './views/pages/Signup';
+import Login from './views/pages/Login';
 
 
 const App = ({ token, logout, children }) => (
@@ -29,6 +33,13 @@ const App = ({ token, logout, children }) => (
         </div>
       ) : (
         <div id="auth">
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+            </Switch>
+          </BrowserRouter>
           {children}
         </div>
       )}

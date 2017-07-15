@@ -3,7 +3,7 @@
 import {
   SET_USER_TOKEN,
   LOGOUT_USER,
-} from '../actions/user';
+} from './actions';
 
 const initialState = {
   token: localStorage.getItem('token'),

@@ -2,21 +2,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo';
 import createLogger from 'redux-logger';
 
 import config from '../config.json';
 
 import App from './App';
 import './index.css';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import loginReducer from './reducers/login';
-import registerReducer from './reducers/register';
-import userReducer from './reducers/user';
+import loginReducer from './state/ducks/login/reducers';
+import signupReducer from './state/ducks/signup/reducers';
+import userReducer from './state/ducks/user/reducers';
 
 const networkInterface = createNetworkInterface({
   uri: config.graphQLServiceUri,
@@ -42,7 +38,7 @@ const client = new ApolloClient({ networkInterface });
 const reducers = combineReducers({
   apollo: client.reducer(),
   login: loginReducer,
-  register: registerReducer,
+  signup: signupReducer,
   user: userReducer,
 });
 
@@ -55,13 +51,7 @@ const store = createStore(reducers, {},
 
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Login} />
-        <Route path="register" component={Register} />
-        <Route path="login" component={Login} />
-      </Route>
-    </Router>
+    <App />
   </ApolloProvider>,
   document.getElementById('root'),
 );

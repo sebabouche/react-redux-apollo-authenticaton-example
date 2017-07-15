@@ -29,9 +29,11 @@ const styles = {
   },
 };
 
-const AuthForm = ({
+const SignupForm = ({
   onSubmit,
   loading,
+  firstname,
+  lastname,
   email,
   submitButtonLabel,
   successMessage,
@@ -42,12 +44,31 @@ const AuthForm = ({
       event.preventDefault();
       const formData = new FormData(event.target);
       return onSubmit({
+        firstname: formData.get('firstname'),
+        lastname: formData.get('lastname'),
         email: formData.get('email'),
         password: formData.get('password'),
+        emailSubscription: false,
       });
     }}
     style={styles.form}
   >
+    <input
+      type="text"
+      name="firstname"
+      placeholder="firstname"
+      defaultValue={firstname}
+      style={styles.input}
+      required
+    />
+    <input
+      type="text"
+      name="lastname"
+      placeholder="lastname"
+      defaultValue={lastname}
+      style={styles.input}
+      required
+    />
     <input
       type="text"
       name="email"
@@ -88,20 +109,24 @@ const AuthForm = ({
   </form>
 );
 
-AuthForm.propTypes = {
+SignupForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string.isRequired,
   successMessage: PropTypes.string,
   errorMessage: PropTypes.string,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
   email: PropTypes.string,
 };
 
-AuthForm.defaultProps = {
+SignupForm.defaultProps = {
   loading: false,
   successMessage: '',
   errorMessage: '',
+  firstname: '',
+  lastname: '',
   email: '',
 };
 
-export default AuthForm;
+export default SignupForm;

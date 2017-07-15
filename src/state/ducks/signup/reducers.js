@@ -1,35 +1,36 @@
 import {
-  LOGIN_USER_REQUEST,
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_ERROR,
-} from '../actions/login';
+  CREATE_USER_REQUEST,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_ERROR,
+} from './actions';
 
 const initialState = {
-  token: null,
+  errorMessage: null,
+  successMessage: null,
   loading: false,
   email: null,
-  errorMessage: null,
-  alertMessage: null,
 };
 
 export default (state = initialState, { type, ...payload }) => {
   switch (type) {
-    case LOGIN_USER_REQUEST:
+    case CREATE_USER_REQUEST:
       return {
         ...initialState,
         loading: true,
         email: payload.email,
       };
-    case LOGIN_USER_SUCCESS:
+    case CREATE_USER_SUCCESS:
       return {
         ...state,
+        loading: false,
+        errorMessage: null,
         successMessage: payload.message,
-        loading: false,
       };
-    case LOGIN_USER_ERROR:
+    case CREATE_USER_ERROR:
       return {
         ...state,
         loading: false,
+        successMessage: null,
         errorMessage: payload.message,
       };
     default:
