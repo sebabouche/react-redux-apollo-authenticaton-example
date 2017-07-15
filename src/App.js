@@ -1,12 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react"
+import { connect } from "react-redux"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-import { logoutUser } from './state/ducks/user/actions';
-import logo from './logo.svg';
-import './App.css';
-import Signup from './views/pages/Signup';
-import Login from './views/pages/Login';
+import { logoutUser } from "./state/ducks/user/actions"
+import logo from "./logo.svg"
+import "./App.css"
+import Signup from "./views/pages/Signup"
+import Login from "./views/pages/Login"
 
 
 const App = ({ token, logout, children }) => (
@@ -45,16 +45,16 @@ const App = ({ token, logout, children }) => (
       )}
     </main>
   </div>
-);
+)
 
 const mapStateToProps = state => ({
   token: state.user.token,
-});
+})
 
 const mapDispatchToProps = dispatch => ({
   logout() {
-    dispatch(logoutUser());
+    dispatch(logoutUser())
   },
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

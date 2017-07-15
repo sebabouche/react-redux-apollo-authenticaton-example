@@ -1,33 +1,33 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react"
 
 const styles = {
   form: {
     marginBottom: 20,
   },
   input: {
-    display: 'block',
+    display: "block",
     width: 200,
-    margin: '0 auto 10px auto',
+    margin: "0 auto 10px auto",
     height: 18,
     fontSize: 14,
     padding: 10,
     outline: 0,
   },
   successMessage: {
-    backgroundColor: 'rgb(251, 161, 97)',
+    backgroundColor: "rgb(251, 161, 97)",
     padding: 10,
     width: 300,
-    color: 'white',
-    margin: '15px auto',
+    color: "white",
+    margin: "15px auto",
   },
   errorMessage: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     padding: 10,
     width: 300,
-    color: 'white',
-    margin: '15px auto',
+    color: "white",
+    margin: "15px auto",
   },
-};
+}
 
 const SignupForm = ({
   onSubmit,
@@ -41,15 +41,15 @@ const SignupForm = ({
 }) => (
   <form
     onSubmit={(event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
+      event.preventDefault()
+      const formData = new FormData(event.target)
       return onSubmit({
-        firstname: formData.get('firstname'),
-        lastname: formData.get('lastname'),
-        email: formData.get('email'),
-        password: formData.get('password'),
+        firstname: formData.get("firstname"),
+        lastname: formData.get("lastname"),
+        email: formData.get("email"),
+        password: formData.get("password"),
         emailSubscription: false,
-      });
+      })
     }}
     style={styles.form}
   >
@@ -107,7 +107,7 @@ const SignupForm = ({
       )}
     </div>
   </form>
-);
+)
 
 SignupForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -118,15 +118,15 @@ SignupForm.propTypes = {
   firstname: PropTypes.string,
   lastname: PropTypes.string,
   email: PropTypes.string,
-};
+}
 
 SignupForm.defaultProps = {
   loading: false,
-  successMessage: '',
-  errorMessage: '',
-  firstname: '',
-  lastname: '',
-  email: '',
-};
+  successMessage: "",
+  errorMessage: "",
+  firstname: "",
+  lastname: "",
+  email: "",
+}
 
-export default SignupForm;
+export default SignupForm

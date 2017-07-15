@@ -3,11 +3,11 @@
 import {
   SET_USER_TOKEN,
   LOGOUT_USER,
-} from './actions';
+} from "./actions"
 
 const initialState = {
-  token: localStorage.getItem('token'),
-};
+  token: localStorage.getItem("token"),
+}
 
 export default (state = initialState, { type, ...payload }) => {
   switch (type) {
@@ -15,13 +15,13 @@ export default (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         token: payload.token,
-      };
+      }
     case LOGOUT_USER:
       return {
         ...state,
         token: null,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

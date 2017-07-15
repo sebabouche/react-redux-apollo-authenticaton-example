@@ -1,33 +1,33 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from "react"
 
 const styles = {
   form: {
     marginBottom: 20,
   },
   input: {
-    display: 'block',
+    display: "block",
     width: 200,
-    margin: '0 auto 10px auto',
+    margin: "0 auto 10px auto",
     height: 18,
     fontSize: 14,
     padding: 10,
     outline: 0,
   },
   successMessage: {
-    backgroundColor: 'rgb(251, 161, 97)',
+    backgroundColor: "rgb(251, 161, 97)",
     padding: 10,
     width: 300,
-    color: 'white',
-    margin: '15px auto',
+    color: "white",
+    margin: "15px auto",
   },
   errorMessage: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     padding: 10,
     width: 300,
-    color: 'white',
-    margin: '15px auto',
+    color: "white",
+    margin: "15px auto",
   },
-};
+}
 
 const LoginForm = ({
   onSubmit,
@@ -39,12 +39,12 @@ const LoginForm = ({
 }) => (
   <form
     onSubmit={(event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
+      event.preventDefault()
+      const formData = new FormData(event.target)
       return onSubmit({
-        email: formData.get('email'),
-        password: formData.get('password'),
-      });
+        email: formData.get("email"),
+        password: formData.get("password"),
+      })
     }}
     style={styles.form}
   >
@@ -86,7 +86,7 @@ const LoginForm = ({
       )}
     </div>
   </form>
-);
+)
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -95,13 +95,13 @@ LoginForm.propTypes = {
   successMessage: PropTypes.string,
   errorMessage: PropTypes.string,
   email: PropTypes.string,
-};
+}
 
 LoginForm.defaultProps = {
   loading: false,
-  successMessage: '',
-  errorMessage: '',
-  email: '',
-};
+  successMessage: "",
+  errorMessage: "",
+  email: "",
+}
 
-export default LoginForm;
+export default LoginForm
