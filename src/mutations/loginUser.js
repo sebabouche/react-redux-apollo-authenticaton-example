@@ -6,7 +6,7 @@ export default gql`
       token,
       user {
         id,
-        username
+        email
       }
     }
   }

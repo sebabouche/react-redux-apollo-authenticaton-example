@@ -17,9 +17,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSubmit({ username, password }) {
-    dispatch(createUserRequest({ username }));
-    ownProps.createUser({ username, password })
+  onSubmit({ email, password }) {
+    dispatch(createUserRequest({ email }));
+    ownProps.createUser({ email, password })
     .then(() => {
       dispatch(createUserSuccess());
     }).catch(error => dispatch(createUserError({ error })));

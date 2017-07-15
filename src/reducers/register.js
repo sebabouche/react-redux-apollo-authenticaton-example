@@ -8,7 +8,7 @@ const initialState = {
   errorMessage: null,
   successMessage: null,
   loading: false,
-  username: null,
+  email: null,
 };
 
 export default (state = initialState, { type, ...payload }) => {
@@ -17,7 +17,7 @@ export default (state = initialState, { type, ...payload }) => {
       return {
         ...initialState,
         loading: true,
-        username: payload.username,
+        email: payload.email,
       };
     case CREATE_USER_SUCCESS:
       return {

@@ -32,7 +32,7 @@ const styles = {
 const AuthForm = ({
   onSubmit,
   loading,
-  username,
+  email,
   submitButtonLabel,
   successMessage,
   errorMessage,
@@ -42,7 +42,7 @@ const AuthForm = ({
       event.preventDefault();
       const formData = new FormData(event.target);
       return onSubmit({
-        username: formData.get('username'),
+        email: formData.get('email'),
         password: formData.get('password'),
       });
     }}
@@ -50,9 +50,9 @@ const AuthForm = ({
   >
     <input
       type="text"
-      name="username"
-      placeholder="username"
-      defaultValue={username}
+      name="email"
+      placeholder="email"
+      defaultValue={email}
       style={styles.input}
       required
     />
@@ -94,14 +94,14 @@ AuthForm.propTypes = {
   submitButtonLabel: PropTypes.string.isRequired,
   successMessage: PropTypes.string,
   errorMessage: PropTypes.string,
-  username: PropTypes.string,
+  email: PropTypes.string,
 };
 
 AuthForm.defaultProps = {
   loading: false,
   successMessage: '',
   errorMessage: '',
-  username: '',
+  email: '',
 };
 
 export default AuthForm;

@@ -7,7 +7,7 @@ import {
 const initialState = {
   token: null,
   loading: false,
-  username: null,
+  email: null,
   errorMessage: null,
   alertMessage: null,
 };
@@ -18,7 +18,7 @@ export default (state = initialState, { type, ...payload }) => {
       return {
         ...initialState,
         loading: true,
-        username: payload.username,
+        email: payload.email,
       };
     case LOGIN_USER_SUCCESS:
       return {

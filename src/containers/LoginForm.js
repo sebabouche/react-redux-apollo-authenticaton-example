@@ -19,10 +19,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSubmit: ({ username, password }) => {
-    dispatch(loginUserRequest({ username }));
+  onSubmit: ({ email, password }) => {
+    dispatch(loginUserRequest({ email }));
 
-    ownProps.loginUser({ username, password })
+    ownProps.loginUser({ email, password })
     .then((data) => {
       const token = data.data.loginUser.token;
 
