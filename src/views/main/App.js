@@ -2,14 +2,14 @@ import React from "react"
 import { connect } from "react-redux"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-import { logoutUser } from "./state/ducks/user/actions"
+import { logoutUser } from "../../state/ducks/user/actions"
 import logo from "./logo.svg"
 import "./App.css"
-import Signup from "./views/pages/Signup"
-import Login from "./views/pages/Login"
+import Signup from "../pages/Signup"
+import Login from "../pages/Login"
 
 
-const App = ({ token, logout, children }) => (
+const App = ({ token, logout }) => (
   <div className="App">
     <div className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -21,6 +21,7 @@ const App = ({ token, logout, children }) => (
       {token ? (
         <div id="logout">
           <h2>You are authenticated!</h2>
+          <p>Token is <code>{token}</code></p>
           <div>
             <button
               className="btn"
@@ -40,7 +41,6 @@ const App = ({ token, logout, children }) => (
               <Route path="/login" component={Login} />
             </Switch>
           </BrowserRouter>
-          {children}
         </div>
       )}
     </main>

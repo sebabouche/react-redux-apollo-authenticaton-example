@@ -8,7 +8,7 @@ import createLogger from "redux-logger"
 
 import config from "../config.json"
 
-import App from "./App"
+import App from "./views/main/App"
 import "./index.css"
 import loginReducer from "./state/ducks/login/reducers"
 import signupReducer from "./state/ducks/signup/reducers"
