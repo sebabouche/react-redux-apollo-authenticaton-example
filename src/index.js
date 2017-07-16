@@ -4,10 +4,9 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import { ApolloProvider, ApolloClient, createNetworkInterface } from "react-apollo"
-import createLogger from "redux-logger"
+import "semantic-ui-css/semantic.min.css"
 
 import config from "../config.json"
-
 import App from "./views/main/App"
 import "./index.css"
 import loginReducer from "./state/ducks/login/reducers"
@@ -44,7 +43,7 @@ const reducers = combineReducers({
 
 const store = createStore(reducers, {},
   compose(
-    applyMiddleware(client.middleware(), createLogger()),
+    applyMiddleware(client.middleware()),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
   ),
 )
