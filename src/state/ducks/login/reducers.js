@@ -1,8 +1,4 @@
-import {
-  LOGIN_USER_REQUEST,
-  LOGIN_USER_SUCCESS,
-  LOGIN_USER_ERROR,
-} from "./actions"
+import types from "./types"
 
 const initialState = {
   token: null,
@@ -14,25 +10,25 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload }) => {
   switch (type) {
-    case LOGIN_USER_REQUEST:
-      return {
-        ...initialState,
-        loading: true,
-        email: payload.email,
-      }
-    case LOGIN_USER_SUCCESS:
-      return {
-        ...state,
-        successMessage: payload.message,
-        loading: false,
-      }
-    case LOGIN_USER_ERROR:
-      return {
-        ...state,
-        loading: false,
-        errorMessage: payload.message,
-      }
-    default:
-      return state
+  case types.LOGIN_USER_REQUEST:
+    return {
+      ...initialState,
+      loading: true,
+      email: payload.email,
+    }
+  case types.LOGIN_USER_SUCCESS:
+    return {
+      ...state,
+      successMessage: payload.message,
+      loading: false,
+    }
+  case types.LOGIN_USER_ERROR:
+    return {
+      ...state,
+      loading: false,
+      errorMessage: payload.message,
+    }
+  default:
+    return state
   }
 }

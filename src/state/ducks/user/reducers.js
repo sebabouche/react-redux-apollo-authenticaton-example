@@ -1,9 +1,6 @@
 /* globals localStorage */
 
-import {
-  SET_USER_TOKEN,
-  LOGOUT_USER,
-} from "./actions"
+import types from "./types"
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -11,17 +8,17 @@ const initialState = {
 
 export default (state = initialState, { type, ...payload }) => {
   switch (type) {
-    case SET_USER_TOKEN:
-      return {
-        ...state,
-        token: payload.token,
-      }
-    case LOGOUT_USER:
-      return {
-        ...state,
-        token: null,
-      }
-    default:
-      return state
+  case types.SET_USER_TOKEN:
+    return {
+      ...state,
+      token: payload.token,
+    }
+  case types.LOGOUT_USER:
+    return {
+      ...state,
+      token: null,
+    }
+  default:
+    return state
   }
 }
