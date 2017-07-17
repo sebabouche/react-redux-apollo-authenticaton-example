@@ -30,7 +30,7 @@ const styles = {
 }
 
 const SignupForm = ({
-  onSubmit,
+  handleSubmit,
   loading,
   firstname,
   lastname,
@@ -43,7 +43,7 @@ const SignupForm = ({
     onSubmit={(event) => {
       event.preventDefault()
       const formData = new FormData(event.target)
-      return onSubmit({
+      return handleSubmit({
         firstname: formData.get("firstname"),
         lastname: formData.get("lastname"),
         email: formData.get("email"),
@@ -110,7 +110,7 @@ const SignupForm = ({
 )
 
 SignupForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string.isRequired,
   successMessage: PropTypes.string,

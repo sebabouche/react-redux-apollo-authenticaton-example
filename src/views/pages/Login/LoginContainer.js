@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSubmit: ({ email, password }) => {
+  handleSubmit: ({ email, password }) => {
     dispatch(signinUserRequest({ email }))
 
     ownProps.signinUser({ variables: { email, password } })

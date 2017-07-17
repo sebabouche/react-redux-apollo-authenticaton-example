@@ -29,67 +29,71 @@ const styles = {
   },
 }
 
-const LoginForm = ({
-  onSubmit,
-  loading,
-  email,
-  submitButtonLabel,
-  successMessage,
-  errorMessage,
-}) => (
-  <form
-    onSubmit={(event) => {
-      event.preventDefault()
-      const formData = new FormData(event.target)
-      return onSubmit({
-        email: formData.get("email"),
-        password: formData.get("password"),
-      })
-    }}
-    style={styles.form}
-  >
-    <input
-      type="text"
-      name="email"
-      placeholder="email"
-      defaultValue={email}
-      style={styles.input}
-      required
-    />
-    <input
-      type="password"
-      name="password"
-      placeholder="password"
-      style={styles.input}
-      required
-    />
+const LoginForm = (props) => {
+  console.log(props)
+  const {
+    handleSubmit,
+    loading,
+    email,
+    submitButtonLabel,
+    successMessage,
+    errorMessage,
+  } = props
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        return handleSubmit({
+          email: formData.get("email"),
+          password: formData.get("password"),
+        })
+      }}
+      style={styles.form}
+    >
+      <input
+        type="text"
+        name="email"
+        placeholder="email"
+        defaultValue={email}
+        style={styles.input}
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        style={styles.input}
+        required
+      />
 
-    <div>
-      <button
-        type="submit"
-        className="btn"
-      >{submitButtonLabel}
-      </button>
-    </div>
+      <div>
+        <button
+          type="submit"
+          className="btn"
+        >{submitButtonLabel}
+        </button>
+      </div>
 
-    <div>
-      {loading && (
-        <div style={{ margin: 20 }}>Loading...</div>
-      )}
+      <div>
+        {loading && (
+          <div style={{ margin: 20 }}>Loading...</div>
+        )}
 
-      {successMessage && (
-        <div style={styles.successMessage}>{successMessage}</div>
-      )}
+        {successMessage && (
+          <div style={styles.successMessage}>{successMessage}</div>
+        )}
 
-      {errorMessage && (
-        <div style={styles.errorMessage}>{errorMessage}</div>
-      )}
-    </div>
-  </form>
-)
+        {errorMessage && (
+          <div style={styles.errorMessage}>{errorMessage}</div>
+        )}
+      </div>
+    </form>
+  )
+}
 
 LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   submitButtonLabel: PropTypes.string.isRequired,
   successMessage: PropTypes.string,

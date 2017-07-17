@@ -10,7 +10,7 @@ import SignupForm from "./SignupForm"
 
 const withMutation = graphql(createUser, {
   props: ({ mutate }) => ({
-    createUser: variables => mutate(variables),
+    dispatchCreateUser: variables => mutate(variables),
   }),
 })
 
@@ -19,9 +19,19 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSubmit({ firstname, lastname, email, password, emailSubscription }) {
+  handleSubmit({ firstname, lastname, email, password, emailSubscription }) {
     dispatch(createUserRequest({ email }))
-    ownProps.createUser({ variables: { firstname, lastname, email, password, emailSubscription } })
+    ownProps.dispatchCreateUser(
+      {
+        variables: {
+          firstname,
+          lastname,
+          email,
+          password,
+          emailSubscription,
+        },
+      },
+    )
     .then(() => {
       dispatch(createUserSuccess())
     }).catch(error => dispatch(createUserError({ error })))
