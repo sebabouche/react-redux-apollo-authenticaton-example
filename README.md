@@ -1,20 +1,19 @@
 # react-redux-apollo-authentication-example
-An authentication flow example using GraphQL as a service provided by [Scaphold.io](http://scaphold.io)
+## Introduction
+Wandering on Github to find a smart way to use Redux and Apollo, I found this very promising [react-redux-apollo-authenticaton-example](https://github.com/lnmunhoz/react-redux-apollo-authenticaton-example) from [lnmunhoz](https://github.com/lnmunhoz).  
+I updated some dependencies. I changed the architecture trying to follow `ducks/reducks` architecture.  
+Still, I couldn't reach my goal which was also to move all the business logic which resides in the containers into the `state` directory (using `redux-thunk` and `operations.js` files). I'm open to any suggestions.  
 
 ## Includes
 - React
-- React Router
+- React Router v.4
 - Redux
 - Apollo
 
 ## Setup the backend
-- Create an account on [Scaphold.io](http://scaphold.io)
-- Create your first App on the **Apps** menu.
-- Then copy the endpoint from **My API** menu.
-
-![Scaphold.io My API](https://s29.postimg.org/4ndv1h907/Screenshot_2017_01_13_10_09_57.png)
-
-- Open the `config.json` file based on the root directory and change the `graphQLServiceUri` to your Scaphold app endpoint.
+- Create an account on [Graph.cool](http://graph.cool)
+- Follow part of [this tutorial](https://www.graph.cool/docs/tutorials/react-apollo-email-oopheesaj9/)
+- Endpoint uri should reside in "config.json"
 
 > You dont need to create any schema. Scaphold.io already provides a User schema designed for the needs of this project.
 
